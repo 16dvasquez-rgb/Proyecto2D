@@ -1,3 +1,7 @@
+from wall import Wall
+from player import Player
+from enemy import Enemy
+
 class Map:
     def __init__(self,tile_size=50):
         self.content = [
@@ -13,12 +17,24 @@ class Map:
             "W        W",
             "WWWWWWWWWW",
         ]
+        self.tile_size = tile_size
     def setup(self,wall_group,enemy_group,player_group):
         for row_index,row in enumerate(self.content):
             for col_index,col in enumerate(row):
                 x = col_index*self.tile_size
                 y = row_index*self.tile_size
-                print("Fix Release")
-                print("Fix Release 2")
+                width = self.tile_size
+                height = self.tile_size
+                
+                if col == "W":
+                    wall = Wall(x,y,width,height)
+                    wall_group.add(wall)
+                elif col == "E":
+                    enemy = Enemy(x,y,15)
+                    enemy_group.add(enemy)
+                elif col == "P":
+                    player = Player (x,y,15)
+                    player_group.add(player)
+                
                 
 
