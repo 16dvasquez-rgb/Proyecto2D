@@ -18,5 +18,6 @@ class Map:
             for col_index,col in enumerate(row):
                 x = col_index*self.tile_size
                 y = row_index*self.tile_size
+                print("Fix Release")
                 
 
