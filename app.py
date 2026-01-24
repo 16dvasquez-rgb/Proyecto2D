@@ -1,7 +1,8 @@
 import pygame
-from player import Player
-from enemy import Enemy
-from wall import Wall
+# from player import Player
+# from enemy import Enemy
+# from wall import Wall
+from map import Map
 
 #para que la libreria pygame funcione y todo funcione tambien
 pygame.init ()
@@ -25,9 +26,11 @@ class App():
         self.screen = pygame.display.set_mode((self.width,self.height))
         self.caption = pygame.display.set_caption(caption)
         self.clock = pygame.time.Clock()
-        self.player = Player(self.width//2,self.height//2,15,"assets\sprite.png")
-        self.enemy = Enemy(self.width//2,self.height//2,15,"assets\enemy.jpg")
-        self.wall = Wall(self.width//4,self.height//4,100,200) 
+        self.players = pygame.sprite.Group()
+        self.enemies = pygame.sprite.Group()
+        self.walls = pygame.sprite.Group()
+        self.map = Map()
+        self.map.setup(self.walls,self.enemies,self.players)
 
     def run(self):
         while self.running:
@@ -45,15 +48,12 @@ class App():
                         self.running = False
             
             keys = pygame.key.get_pressed()
-            self.player.update(keys,self.width,self.height)
-            self.enemy.update(keys,self.width,self.height)
+            self.players.update(keys,self.width,self.height)
+            self.enemies.update(keys,self.width,self.height)
             self.screen.fill(self.backgroundColor)
-            self.player.draw(self.screen)
-            self.enemy.draw(self.screen)
-            self.wall.draw(self.screen)
-
-
-
+            self.players.draw(self.screen)
+            self.enemies.draw(self.screen)
+            self.walls.draw(self.screen)
 
             #actulizamos la ventana
             pygame.display.flip()

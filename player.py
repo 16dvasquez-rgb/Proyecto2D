@@ -1,6 +1,7 @@
 import pygame
-class Player:
-    def __init__(self,x,y,speed,image_path):
+class Player(pygame.sprite.Sprite):
+    def __init__(self,x,y,speed,image_path="assets\sprite.png"):
+        super().__init__()
         imagenOriginal = pygame.image.load(image_path).convert_alpha()
         scale = (64,64)
         self.image = pygame.transform.smoothscale(imagenOriginal,scale)
@@ -17,6 +18,3 @@ class Player:
             self.rect.y -= self.speed
         if keys [pygame.K_DOWN]:
             self.rect.y += self.speed
-
-    def draw(self,surface):
-        surface.blit(self.image,self.rect) 
