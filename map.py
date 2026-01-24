@@ -19,5 +19,6 @@ class Map:
                 x = col_index*self.tile_size
                 y = row_index*self.tile_size
                 print("Fix Release")
+                print("Fix Release 2")
                 
 
