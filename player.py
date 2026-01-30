@@ -20,7 +20,7 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.x += move_x
 
-        self.checkColisionX(walls_group,move_x)
+        self.checkWallColisionX(walls_group,move_x)
 
         move_y = 0
 
@@ -31,7 +31,7 @@ class Player(pygame.sprite.Sprite):
 
         self.rect.y += move_y
 
-        self.checkColisionY(walls_group,move_y)
+        self.checkWallColisionY(walls_group,move_y)
 
     def draw(self,surface):
         surface.blit(self.image,self.rect) 
@@ -39,7 +39,7 @@ class Player(pygame.sprite.Sprite):
     def setupPosition(self,x,y):
         self.rect.center = (x,y)
 
-    def checkColisionX(self,walls_group,move_x):
+    def checkWallColisionX(self,walls_group,move_x):
         hits = pygame.sprite.spritecollide(self,walls_group,False)
         for walls in hits:
             if move_x > 0:
@@ -49,10 +49,19 @@ class Player(pygame.sprite.Sprite):
 
         
 
-    def checkColisionY(self,walls_group,move_y):
+    def checkWallColisionY(self,walls_group,move_y):
         hits = pygame.sprite.spritecollide(self,walls_group,False)
         for walls in hits:
             if move_y > 0:
                 self.rect.bottom = walls.rect.top
             elif move_y < 0:
                 self.rect.top = walls.rect.bottom
+
+    def checkenemycolision (self,enemy_group):
+        hits = pygame.sprite.spritecollide(self,enemy_group,False)
+
+        if hits:
+            return True
+        else:
+            return False
+    # def dash(self)

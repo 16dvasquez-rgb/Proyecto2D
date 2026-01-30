@@ -55,10 +55,15 @@ class App():
             self.enemies.draw(self.screen)
             self.walls.draw(self.screen)
 
+            if self.player.checkenemycolision(self.enemies):
+                self.running = False
+
             #actulizamos la ventana
             pygame.display.flip()
 
             #los frames por segundo     
-            self.clock.tick (60)
+            self.clock.tick (1000)
+
+        
 
         
