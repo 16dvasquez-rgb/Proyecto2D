@@ -18,3 +18,15 @@ class Player(pygame.sprite.Sprite):
             self.rect.y -= self.speed
         if keys [pygame.K_DOWN]:
             self.rect.y += self.speed
+
+    def draw(self,surface):
+        surface.blit(self.image,self.rect) 
+    
+    def setupPosition(self,x,y):
+        self.rect.center = (x,y)
+
+    def checkColisionX(self):
+        pass
+
+    def checkColisionY(self):
+        pass

@@ -5,20 +5,30 @@ from enemy import Enemy
 class Map:
     def __init__(self,tile_size=50):
         self.content = [
-            "WWWWWWWWWW", #[0,0]
-            "W P      W", #[1,2]
-            "W  EW W  W",
-            "W   W W  W",
-            "W   W W  W",
-            "W   W W  W",
-            "W    W   W",
-            "W   W W  W",
-            "W   W W  W",
-            "W        W",
-            "WWWWWWWWWW",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", #[0,0]
+            "W                                    W", #[1,2]
+            "W  E                                 W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                        P           W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "W                                E   W",
+            "W                                    W",
+            "W                                    W",
+            "W                                    W",
+            "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
         ]
         self.tile_size = tile_size
-    def setup(self,wall_group,enemy_group,player_group):
+    def setup(self,wall_group,enemy_group,player):
         for row_index,row in enumerate(self.content):
             for col_index,col in enumerate(row):
                 x = col_index*self.tile_size
@@ -33,8 +43,7 @@ class Map:
                     enemy = Enemy(x,y,15)
                     enemy_group.add(enemy)
                 elif col == "P":
-                    player = Player (x,y,15)
-                    player_group.add(player)
+                    player.setupPosition(x,y)
                 
                 
 
