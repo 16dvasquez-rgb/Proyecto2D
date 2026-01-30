@@ -48,7 +48,7 @@ class App():
                         self.running = False
             
             keys = pygame.key.get_pressed()
-            self.player.update(keys,self.width,self.height)
+            self.player.update(keys,self.width,self.height,self.walls)
             self.enemies.update(keys,self.width,self.height)
             self.screen.fill(self.backgroundColor)
             self.player.draw(self.screen)

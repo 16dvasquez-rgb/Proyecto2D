@@ -9,15 +9,29 @@ class Player(pygame.sprite.Sprite):
         self.rect.center = (x,y)
         self.speed = speed 
         
-    def update(self,keys,screen_width,screen_height):
+    def update(self,keys,screen_width,screen_height,walls_group):
+
+        move_x = 0
+
         if keys [pygame.K_LEFT]:
-            self.rect.x -= self.speed
+            move_x = -self.speed
         if keys [pygame.K_RIGHT]:
-            self.rect.x += self.speed
+            move_x = self.speed
+
+        self.rect.x += move_x
+
+        self.checkColisionX(walls_group,move_x)
+
+        move_y = 0
+
         if keys [pygame.K_UP]:
-            self.rect.y -= self.speed
+            move_y = -self.speed
         if keys [pygame.K_DOWN]:
-            self.rect.y += self.speed
+            move_y = self.speed
+
+        self.rect.y += move_y
+
+        self.checkColisionY(walls_group,move_y)
 
     def draw(self,surface):
         surface.blit(self.image,self.rect) 
@@ -25,8 +39,20 @@ class Player(pygame.sprite.Sprite):
     def setupPosition(self,x,y):
         self.rect.center = (x,y)
 
-    def checkColisionX(self):
-        pass
+    def checkColisionX(self,walls_group,move_x):
+        hits = pygame.sprite.spritecollide(self,walls_group,False)
+        for walls in hits:
+            if move_x > 0:
+                self.rect.right = walls.rect.left
+            elif move_x < 0:
+                self.rect.left = walls.rect.right
 
-    def checkColisionY(self):
-        pass
+        
+
+    def checkColisionY(self,walls_group,move_y):
+        hits = pygame.sprite.spritecollide(self,walls_group,False)
+        for walls in hits:
+            if move_y > 0:
+                self.rect.bottom = walls.rect.top
+            elif move_y < 0:
+                self.rect.top = walls.rect.bottom
