@@ -7,9 +7,15 @@ class Player(pygame.sprite.Sprite):
         self.image = pygame.transform.smoothscale(imagenOriginal,scale)
         self.rect = self.image.get_rect()
         self.rect.center = (x,y)
-        self.speed = speed 
+        self.speed = speed
+        self.boost_end_time = 0
+        self.normal_speed = speed
+        self.boost_speed = speed*10           
         
     def update(self,keys,screen_width,screen_height,walls_group):
+
+        if keys [pygame.K_q]:
+            self.dash()
 
         move_x = 0
 
@@ -33,6 +39,8 @@ class Player(pygame.sprite.Sprite):
 
         self.checkWallColisionY(walls_group,move_y)
 
+        self.boostdisable()
+
     def draw(self,surface):
         surface.blit(self.image,self.rect) 
     
@@ -46,8 +54,6 @@ class Player(pygame.sprite.Sprite):
                 self.rect.right = walls.rect.left
             elif move_x < 0:
                 self.rect.left = walls.rect.right
-
-        
 
     def checkWallColisionY(self,walls_group,move_y):
         hits = pygame.sprite.spritecollide(self,walls_group,False)
@@ -64,4 +70,16 @@ class Player(pygame.sprite.Sprite):
             return True
         else:
             return False
-    # def dash(self)
+        
+    def dash(self):
+        #hacer que la velocidad del jugador sea igual a la velocidadBoost
+        self.speed = self.boost_speed 
+        #definir variable boostDuration
+        boost_duration = 500
+
+        self.boost_end_time = pygame.time.get_ticks()+boost_duration
+
+    def boostdisable(self):
+        current_time = pygame.time.get_ticks()
+        if self.speed == self.boost_speed and current_time > self.boost_end_time:
+            self.speed = self.normal_speed

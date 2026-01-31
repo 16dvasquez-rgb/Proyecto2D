@@ -26,7 +26,7 @@ class App():
         self.screen = pygame.display.set_mode((self.width,self.height))
         self.caption = pygame.display.set_caption(caption)
         self.clock = pygame.time.Clock()
-        self.player = Player(0,0,15)
+        self.player = Player(0,0,1)
         self.enemies = pygame.sprite.Group()
         self.walls = pygame.sprite.Group()
         self.map = Map()
@@ -62,7 +62,7 @@ class App():
             pygame.display.flip()
 
             #los frames por segundo     
-            self.clock.tick (1000)
+            self.clock.tick (60)
 
         
 
