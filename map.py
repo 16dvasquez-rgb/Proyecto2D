@@ -11,7 +11,7 @@ class Map:
             "W                                    W",
             "W                                    W",
             "W                                    W",
-            "W                                    W",
+            "W                E                   W",
             "W                                    W",
             "W                                    W",
             "W                                    W",
@@ -23,11 +23,19 @@ class Map:
             "W                                    W",
             "W                                E   W",
             "W                                    W",
-            "W                                    W",
+            "W                 E                  W",
             "W                                    W",
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
         ]
+        self.mapTest = [
+        "    WWWWW   ",
+        " WW      WW ",
+        "W          W",
+       "W            W",
+       "W            W",
+        ]
         self.tile_size = tile_size
+
     def setup(self,wall_group,enemy_group,player):
         for row_index,row in enumerate(self.content):
             for col_index,col in enumerate(row):

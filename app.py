@@ -1,7 +1,5 @@
 import pygame
 from player import Player
-# from enemy import Enemy
-# from wall import Wall
 from map import Map
 
 #para que la libreria pygame funcione y todo funcione tambien
@@ -26,7 +24,7 @@ class App():
         self.screen = pygame.display.set_mode((self.width,self.height))
         self.caption = pygame.display.set_caption(caption)
         self.clock = pygame.time.Clock()
-        self.player = Player(0,0,1)
+        self.player = Player(0,0,10)
         self.enemies = pygame.sprite.Group()
         self.walls = pygame.sprite.Group()
         self.map = Map()
