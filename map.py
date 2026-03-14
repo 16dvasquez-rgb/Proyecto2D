@@ -28,12 +28,22 @@ class Map:
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
         ]
         self.mapTest = [
-        "    WWWWW   ",
-        " WW      WW ",
-        "W          W",
-       "W            W",
-       "W            W",
-        ]
+    "       WWWWW       ",
+    "     WW     WW     ",
+    "    W         W    ",
+    "   W           W   ",
+    "   W  WW   WW  W   ",
+    "  W   WW   WW   W  ",
+    "  W   WW   WW   W  ",
+    "  W             W  ",
+    "  W             W  ",
+    "  W  W       W  W  ",
+    "  W  W     W  W   ",   
+    "   W   WWWWW   W   ",
+    "    W         W    ",
+    "     WW     WW     ",  
+    "       WWWWW       ",
+  ]
         self.tile_size = tile_size
 
     def setup(self,wall_group,enemy_group,player):
