@@ -3,7 +3,7 @@ from player import Player
 from enemy import Enemy
 
 class Map:
-    def __init__(self,tile_size=50):
+    def __init__(self,tile_size=25):
         self.content = [
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW", #[0,0]
             "W                                    W", #[1,2]
@@ -27,7 +27,7 @@ class Map:
             "W                                    W",
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
         ]
-        self.mapTest = [
+        self.content = [
     "       WWWWW       ",
     "     WW     WW     ",
     "    W         W    ",
@@ -36,14 +36,58 @@ class Map:
     "  W   WW   WW   W  ",
     "  W   WW   WW   W  ",
     "  W             W  ",
-    "  W             W  ",
+    "  W      P      W  ",
     "  W  W       W  W  ",
-    "  W  W     W  W   ",   
-    "   W   WWWWW   W   ",
+    "  W  W       W  W  ",   
+    "   W  WWWWWWW  W   ",
     "    W         W    ",
     "     WW     WW     ",  
     "       WWWWW       ",
   ]
+
+
+        self.content = [
+            "                                                        WWWWWWWWWW                                      ",
+            "                                                        WWWWWWWWWW                                      ",
+            "                                                    WWWW          WWWW                                  ",
+            "                                                    WWWW          WWWW                                  ",
+            "                    WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW              WWWW                                  ",
+            "                    WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW              WWWW                                  ",
+            "          WWWWWWWWWW                                          WWWW                                      ",
+            "          WWWWWWWWWW                                          WWWW                                      ",
+            "      WWWWWWW                                                     WWWW                                  ",
+            "      WWWWWWW                                                     WWWW                                  ",
+            "      WWWW   WWWW                     WWWWWWWWWWW                 WWWW                                  ",
+            "      WWWW   WWWW                     WWWWWWWWWWW                 WWWW                                  ",
+            "      WWWW                                                        WWWW                                  ",
+            "      WWWW                                                        WWWW                                  ",
+            "      WWWW                                                        WWWW                                  ",
+            "      WWWW                   P                                    WWWW                                  ",
+            "      WWWW                                                        WWWW                                  ",
+            "      WWWW                                                        WWWW                                  ",
+            "      WWWW                                                        WWWW                                  ",
+            "      WWWW                                      E                 WWWW                                  ",
+            "      WWWW                                                        WWWWWWWWWWWWWWWWWWWWW                 ",
+            "      WWWW                                                        WWWWWWWWWWWWWWWWWWWWW                 ",
+            "      WWWW                                                        WWWW                 WWWW             ",
+            "          WWWWWWWWWW                                       WWWWWWW                                      ",
+            "          WWWWWWWWWW                                       WWWWWWW                         WWWW         ",
+            "                    WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                WWWW         ",
+            "                    WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW                                WWWW         ",
+            "                 WWWW                                                                      WWWW         ",
+            "                 WWWW                                                                      WWWW         ",
+            "                 WWWW                                                                      WWWW         ",
+            "                 WWWW                      E                                               WWWW         ",
+            "                 WWWW                                                                      WWWW         ",
+            "                 WWWW                                                                      WWWW         ",
+            "                    WWWW                                                                   WWWW         ",
+            "                    WWWW                                                                   WWWW         ",
+            "                    WWWW                                WWWWWWW                        WWWW             ",
+            "                    WWWW                                WWWWWWW                        WWWW             ",
+            "                 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW       WWWWWWWWWWWWWWWWWWWWWWWW                  ",
+            "                 WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW       WWWWWWWWWWWWWWWWWWWWWWWW                  "
+        ]
+
         self.tile_size = tile_size
 
     def setup(self,wall_group,enemy_group,player):
