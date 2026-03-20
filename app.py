@@ -1,6 +1,7 @@
 import pygame
 from player import Player
 from map import Map
+from camera import Camera
 
 #para que la libreria pygame funcione y todo funcione tambien
 pygame.init ()
@@ -30,6 +31,10 @@ class App():
         self.map = Map()
         self.map.setup(self.walls,self.enemies,self.player)
 
+        # Crear la cámara usando el tamaño de la pantalla y del mapa
+        map_width, map_height = self.map.get_pixel_size()
+        self.camera = Camera(self.width, self.height, map_width, map_height)
+
     def run(self):
         while self.running:
 
@@ -48,10 +53,21 @@ class App():
             keys = pygame.key.get_pressed()
             self.player.update(keys,self.width,self.height,self.walls)
             self.enemies.update(keys,self.width,self.height)
+
+            # Actualizar la cámara para que siga al primer jugador
+            for player in self.players:
+                self.camera.update(player)
+                break  # Solo seguimos al primer jugador
+
             self.screen.fill(self.backgroundColor)
-            self.player.draw(self.screen)
-            self.enemies.draw(self.screen)
-            self.walls.draw(self.screen)
+
+            # Dibujar todos los sprites aplicando el offset de la cámara
+            for sprite in self.walls:
+                self.screen.blit(sprite.image, self.camera.apply(sprite))
+            for sprite in self.enemies:
+                self.screen.blit(sprite.image, self.camera.apply(sprite))
+            for sprite in self.players:
+                self.screen.blit(sprite.image, self.camera.apply(sprite))
 
             if self.player.checkenemycolision(self.enemies):
                 self.running = False
