@@ -1,7 +1,4 @@
 import pygame
-# from player import Player
-# from enemy import Enemy
-# from wall import Wall
 from map import Map
 from camera import Camera
 
@@ -53,7 +50,7 @@ class App():
                         self.running = False
             
             keys = pygame.key.get_pressed()
-            self.players.update(keys,self.width,self.height)
+            self.players.update(keys,self.width,self.height,self.walls)
             self.enemies.update(keys,self.width,self.height)
 
             # Actualizar la cámara para que siga al primer jugador
