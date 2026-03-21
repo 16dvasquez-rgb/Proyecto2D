@@ -6,7 +6,7 @@ class Map:
     def __init__(self,tile_size=50):
         self.content = [
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
-            "W P                          W",
+            "W                            W",
             "W  EW W       W   W     E    W",
             "W   W W       W   W          W",
             "W   W W       W   WWWWW      W",
@@ -15,7 +15,7 @@ class Map:
             "W   W W       W   W          W",
             "W   W W       W   W          W",
             "W        WWWWWW   W          W",
-            "W                 W          W",
+            "W            P    W          W",
             "W   WWWWW         WWWWWWWW   W",
             "W       W                    W",
             "W       W    E    W          W",
