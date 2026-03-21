@@ -67,6 +67,9 @@ class App():
                 self.screen.blit(sprite.image, self.camera.apply(sprite))
             for sprite in self.players:
                 self.screen.blit(sprite.image, self.camera.apply(sprite))
+                if sprite.checkenemycolision(self.enemies):
+                    self.running = False
+
 
             #actulizamos la ventana
             pygame.display.flip()
