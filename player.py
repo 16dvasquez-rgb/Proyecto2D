@@ -3,7 +3,7 @@ class Player(pygame.sprite.Sprite):
     def __init__(self,x,y,speed,image_path="assets\sprite.png"):
         super().__init__()
         imagenOriginal = pygame.image.load(image_path).convert_alpha()
-        scale = (64,64)
+        scale = (50,50)
         self.image = pygame.transform.smoothscale(imagenOriginal,scale)
         self.rect = self.image.get_rect()
         self.rect.center = (x,y)

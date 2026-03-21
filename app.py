@@ -51,7 +51,7 @@ class App():
             
             keys = pygame.key.get_pressed()
             self.players.update(keys,self.width,self.height,self.walls)
-            self.enemies.update(keys,self.width,self.height)
+            self.enemies.update(keys,self.width,self.height,self.walls)
 
             # Actualizar la cámara para que siga al primer jugador
             for player in self.players:
