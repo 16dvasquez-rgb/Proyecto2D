@@ -1,6 +1,6 @@
 import pygame
 class Player(pygame.sprite.Sprite):
-    def __init__(self,x,y,speed,image_path="assets\sprite.png"):
+    def __init__(self,x,y,speed,image_path="assets\Player.png"):
         super().__init__()
         imagenOriginal = pygame.image.load(image_path).convert_alpha()
         scale = (50,50)

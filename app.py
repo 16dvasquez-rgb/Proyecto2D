@@ -35,6 +35,8 @@ class App():
         self.camera = Camera(self.width, self.height, map_width, map_height)
 
     def run(self):
+        pygame.mixer.music.load("assets/frenzy style.mp3")
+        pygame.mixer.music.play(-1)
         while self.running:
 
             #obtenemos y revisamos todos los eventos que se han ejecutado en el juego

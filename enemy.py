@@ -4,7 +4,7 @@ import random
 from player import Player
 
 class Enemy(Player):
-    def __init__(self, x, y, speed, image_path="assets\\enemy.jpg"):
+    def __init__(self, x, y, speed, image_path="assets/Enemy.png"):
         super().__init__(x, y, speed, image_path)
         # Elegir una dirección aleatoria inicial (arriba, abajo, izquierda, derecha)
         self.directions = [(1, 0), (-1, 0), (0, 1), (0, -1)]
