@@ -9,4 +9,3 @@ myApp.run()
 #hacer un sistema donde va a salir un tiempo durado y los pochos salvados que al final te van a dar una puntuacion
 #una tabla de tus records
 #hacer un menu  que tenga jugar salir y tu lista de records y que en jugar luego te meta a otro de selecionar mapa 
-
