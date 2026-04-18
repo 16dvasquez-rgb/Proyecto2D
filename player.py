@@ -4,7 +4,7 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
         imagenOriginal = pygame.image.load(image_path).convert_alpha()
         scale = (50,50)
-        self.image = pygame.transform.smoothscale(imagenOriginal,scale)
+        self.image = pygame.transform.scale(imagenOriginal,scale)
         self.rect = self.image.get_rect()
         self.rect.center = (x,y)
         self.speed = speed

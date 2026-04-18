@@ -57,8 +57,8 @@ class Map:
                     wall = Wall(x,y,width,height)
                     wall_group.add(wall)
                 elif col == "E":
-                    enemy = Enemy(x,y,15)
+                    enemy = Enemy(x,y,8)
                     enemy_group.add(enemy)
                 elif col == "P":
-                    player = Player (x,y,15)
+                    player = Player (x,y,8)
                     player_group.add(player)

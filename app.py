@@ -145,7 +145,7 @@ class App():
             pygame.display.flip()
 
             #los frames por segundo     
-            self.clock.tick (60)
+            self.clock.tick (120)
 
         # Detener la música al salir del juego
         pygame.mixer.music.stop()
