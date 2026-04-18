@@ -70,7 +70,13 @@ class Player(pygame.sprite.Sprite):
             return True
         else:
             return False
-        
+    def checkpochocolision (self,pocho_group):
+        hits = pygame.sprite.spritecollide(self,pocho_group,True)
+
+        if hits:
+            return True
+        else:
+            return False        
     def dash(self):
         #hacer que la velocidad del jugador sea igual a la velocidadBoost
         self.speed = self.boost_speed 

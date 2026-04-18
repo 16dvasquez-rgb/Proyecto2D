@@ -1,13 +1,13 @@
 from wall import Wall
 from player import Player
 from enemy import Enemy
-
+from pocho import Pocho
 class Map:
     def __init__(self,tile_size=100):
         self.content = [
             "WWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWW",
             "W                                                                    W",
-            "W  P    W   E       W   WWWWWWWWWWW   W   E          W   WWWWWWW     W",
+            "W  P    W   O       W   WWWWWWWWWWW   W   E          W   WWWWWWW     W",
             "W       W           W             W       WWWWWW     W         W     W",
             "W   WWWWW   WWWWW       WWWWWWW   W   WWWWW          W   W     W     W",
             "W       W       W   W         W   W       W   WWWWWWWW   W     W     W",
@@ -45,7 +45,7 @@ class Map:
         num_rows = len(self.content)
         return (max_cols * self.tile_size, num_rows * self.tile_size)
 
-    def setup(self,wall_group,enemy_group,player_group):
+    def setup(self,wall_group,enemy_group,player_group,pocho_group):
         for row_index,row in enumerate(self.content):
             for col_index,col in enumerate(row):
                 x = col_index*self.tile_size
@@ -62,3 +62,7 @@ class Map:
                 elif col == "P":
                     player = Player (x,y,8)
                     player_group.add(player)
+                elif col == "O":
+                    pocho = Pocho (x,y,8)
+                    pocho_group.add(pocho)
+                

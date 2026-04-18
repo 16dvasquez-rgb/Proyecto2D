@@ -1,6 +1,6 @@
 import pygame
-class Pocho(pygame.sprite.sprite):
-    def __init__(self,x,y,speed,image_path=""):
+class Pocho(pygame.sprite.Sprite):
+    def __init__(self,x,y,speed,image_path="assets/pocho.png"):
         super().__init__()
         imagenOriginal = pygame.image.load(image_path).convert_alpha()
         scale = (50,50)
@@ -15,21 +15,11 @@ class Pocho(pygame.sprite.sprite):
 
         move_x = 0
 
-        if keys [pygame.K_LEFT]:
-            move_x = -self.speed
-        if keys [pygame.K_RIGHT]:
-            move_x = self.speed
-
         self.rect.x += move_x
 
         self.checkWallColisionX(walls_group,move_x)
 
         move_y = 0
-
-        if keys [pygame.K_UP]:
-            move_y = -self.speed
-        if keys [pygame.K_DOWN]:
-            move_y = self.speed
 
         self.rect.y += move_y
 

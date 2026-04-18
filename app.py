@@ -30,9 +30,10 @@ class App():
         self.running = True
         self.players = pygame.sprite.Group()
         self.enemies = pygame.sprite.Group()
+        self.pochos  = pygame.sprite.Group()
         self.walls = pygame.sprite.Group()
         self.map = Map()
-        self.map.setup(self.walls,self.enemies,self.players)
+        self.map.setup(self.walls,self.enemies,self.players,self.pochos)
 
         # Crear la cámara usando el tamaño de la pantalla y del mapa
         map_width, map_height = self.map.get_pixel_size()
@@ -122,6 +123,7 @@ class App():
             keys = pygame.key.get_pressed()
             self.players.update(keys,self.width,self.height,self.walls)
             self.enemies.update(keys,self.width,self.height,self.walls)
+            self.pochos.update(keys,self.width,self.height,self.walls)
 
             # Actualizar la cámara para que siga al primer jugador
             for player in self.players:
@@ -135,8 +137,11 @@ class App():
                 self.screen.blit(sprite.image, self.camera.apply(sprite))
             for sprite in self.enemies:
                 self.screen.blit(sprite.image, self.camera.apply(sprite))
+            for sprite in self.pochos:
+                self.screen.blit(sprite.image, self.camera.apply(sprite))
             for sprite in self.players:
                 self.screen.blit(sprite.image, self.camera.apply(sprite))
+                sprite.checkpochocolision(self.pochos)
                 if sprite.checkenemycolision(self.enemies):
                     self.running = False
 
