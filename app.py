@@ -22,7 +22,7 @@ class App():
 
         self.backgroundColor = backgroundColor
         self.caption = caption
-        self.label = Label("Points: 0", self.width - 150, 50, font_size=40)
+        self.label = Label("Points: 0", self.width - 150, 50, font_size=40,color=(255,0,0))
         pygame.display.set_caption(caption)
         self.clock = pygame.time.Clock()
 
@@ -107,6 +107,7 @@ class App():
         pygame.mixer.music.load("assets/frenzy style.mp3")
         pygame.mixer.music.play(-1)
 
+        self.label.update_text(f"Points: 0")
         while self.running:
 
             #obtenemos y revisamos todos los eventos que se han ejecutado en el juego
@@ -147,7 +148,8 @@ class App():
                     self.label.update_text(f"Points: {sprite.points}")
                     print (sprite.points)    
                 if sprite.checkenemycolision(self.enemies):
-                    self.running = False
+                    self.running = False 
+                    
 
             self.label.draw(self.screen)
 
