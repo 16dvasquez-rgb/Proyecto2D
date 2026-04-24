@@ -22,8 +22,7 @@ class App():
 
         self.backgroundColor = backgroundColor
         self.caption = caption
-        self.label = Label("Points: ",width-50,height-50)
-        self.label.draw(self.screen)
+        self.label = Label("Points: 0", self.width - 150, 50, font_size=40)
         pygame.display.set_caption(caption)
         self.clock = pygame.time.Clock()
 
@@ -145,10 +144,12 @@ class App():
                 self.screen.blit(sprite.image, self.camera.apply(sprite))     
                 if sprite.checkpochocolision(self.pochos):
                     sprite.points += 1
+                    self.label.update_text(f"Points: {sprite.points}")
                     print (sprite.points)    
                 if sprite.checkenemycolision(self.enemies):
                     self.running = False
 
+            self.label.draw(self.screen)
 
             #actulizamos la ventana
             pygame.display.flip()
