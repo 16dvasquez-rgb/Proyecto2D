@@ -1,7 +1,7 @@
 import pygame
 from map import Map
 from camera import Camera
-from menu import Menu
+from menu import Menu,Label
 
 #para que la libreria pygame funcione y todo funcione tambien
 pygame.init ()
@@ -22,6 +22,8 @@ class App():
 
         self.backgroundColor = backgroundColor
         self.caption = caption
+        self.label = Label("Points: ",width-50,height-50)
+        self.label.draw(self.screen)
         pygame.display.set_caption(caption)
         self.clock = pygame.time.Clock()
 
@@ -140,8 +142,10 @@ class App():
             for sprite in self.pochos:
                 self.screen.blit(sprite.image, self.camera.apply(sprite))
             for sprite in self.players:
-                self.screen.blit(sprite.image, self.camera.apply(sprite))
-                sprite.checkpochocolision(self.pochos)
+                self.screen.blit(sprite.image, self.camera.apply(sprite))     
+                if sprite.checkpochocolision(self.pochos):
+                    sprite.points += 1
+                    print (sprite.points)    
                 if sprite.checkenemycolision(self.enemies):
                     self.running = False
 

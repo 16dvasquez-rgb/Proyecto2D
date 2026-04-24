@@ -10,7 +10,8 @@ class Player(pygame.sprite.Sprite):
         self.speed = speed
         self.boost_end_time = 0
         self.normal_speed = speed
-        self.boost_speed = speed*10           
+        self.boost_speed = speed*10
+        self.points = 0           
         
     def update(self,keys,screen_width,screen_height,walls_group):
 
